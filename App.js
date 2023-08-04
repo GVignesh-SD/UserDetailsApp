@@ -264,19 +264,14 @@ export default function App() {
     {country: 'Zambia', code: '260', iso: 'ZM'},
     {country: 'Zimbabwe', code: '263', iso: 'ZW'},
   ];
-
-  const isVideoRecorded = () => capturedVideo !== null;
-
   const handleRecordVideo = async () => {
     console.log("Calling handle record");
     try {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
-  
       if (status !== 'granted') {
         alert('Camera permission denied. Cannot record a video.');
         return;
       }
-  
       console.log("Videos start");
       const result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
