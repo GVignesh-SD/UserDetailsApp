@@ -10,7 +10,6 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { Video } from 'expo-av';
 
-
 export default function App() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -265,27 +264,25 @@ export default function App() {
     {country: 'Zimbabwe', code: '263', iso: 'ZW'},
   ];
   const handleRecordVideo = async () => {
-    console.log("Calling handle record");
+    // console.log("Calling handle record");
     try {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
         alert('Camera permission denied. Cannot record a video.');
         return;
       }
-      console.log("Videos start");
+      // console.log("Videos start");
       const result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
         allowsEditing: true,
         quality: 1,
         aspect: [16, 9],
       });
-  
-      console.log("Video End");
-      console.log(result);
-  
+      // console.log("Video End");
+      // console.log(result);
       if (!result.canceled) {
         // Save the recorded video to local storage
-        console.log("Video saving...");
+        // console.log("Video saving...");
         await saveVideoToLocal(result.uri);
       }
     } catch (error) {
