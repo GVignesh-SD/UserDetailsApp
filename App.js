@@ -20,7 +20,6 @@ export default function App() {
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [capturedImage, setCapturedImage] = useState(null);
   const [capturedVideo, setCapturedVideo] = useState(null);
-
   const countries = [
     {country: 'Afghanistan', code: '93', iso: 'AF'},
     {country: 'Albania', code: '355', iso: 'AL'},
@@ -289,26 +288,21 @@ export default function App() {
       console.log('Error while recording video:', error);
     }
   };
-
-
   const saveVideoToLocal = async (videoPath) => {
     console.log("Calling savevideo to local storage")
     try {
       const fileName = 'myRecordedVideo.mp4';
       const destinationUri = FileSystem.documentDirectory + fileName;
-
       await FileSystem.copyAsync({
         from: videoPath,
         to: destinationUri,
       });
-
       console.log('Video saved to local storage:', destinationUri);
       setCapturedVideo(destinationUri);
     } catch (error) {
       console.log('Error while saving video:', error);
     }
   };
-
 
   const handleTakePhoto = async () => {
     try {
